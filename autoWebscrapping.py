@@ -6,71 +6,54 @@ import pickle
 from bs4 import BeautifulSoup
 
 URLarray = [
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/bpt/",
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/cjp/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/rrz/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/dit5/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/afc/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/hmd1/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/thj10/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/ffl/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/fwl/",		
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/nwh/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/dah56/",
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/rkj/",
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/cwl/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/cul/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/htp/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/ais/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/eds/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/rcs/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/nns/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/aos/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/nst/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/lgt/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/mxw/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/chz8/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/hem23/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/man27/",
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/waa2/",
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/alg25/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/cns/",
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/phs/",	
-"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/qqs/"]
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/bpt",
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/cjp",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/rrz",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/dit5",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/afc",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/hmd1",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/thj10",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/ffl",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/fwl",		
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/nwh",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/dah56",
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/rkj",
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/cwl",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/cul",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/htp",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/ais",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/eds",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/rcs",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/nns",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/aos",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/nst",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/lgt",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/mxw",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/chz8",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/hem23",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/man27",
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/waa2",
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/alg25",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/cns",
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/phs",	
+"http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/qqs"]
 
-TeacherEmail = [
-"bpt@aber.ac.uk",
-"cjp@aber.ac.uk",
-"rrz@aber.ac.uk",
-"dit5@aber.ac.uk",
-"afc@aber.ac.uk",
-"hmd1@aber.ac.uk",
-"thj10@aber.ac.uk",
-"ffl@aber.ac.uk",
-"fwl@aber.ac.uk",
-"nwh@aber.ac.uk",
-"dah56@aber.ac.uk",
-"rkj@aber.ac.uk",
-"cwl@aber.ac.uk",
-"cul@aber.ac.uk",
-"htp@aber.ac.uk",
-"ais@aber.ac.uk",
-"eds@aber.ac.uk",
-"rcs@aber.ac.uk",
-"nns@aber.ac.uk",
-"aos@aber.ac.uk",
-"nst@aber.ac.uk",
-"lgt@aber.ac.uk",
-"mxw@aber.ac.uk",
-"chz8@aber.ac.uk",
-"hem23@aber.ac.uk",
-"man27@aber.ac.uk",
-"waa2@aber.ac.uk",
-"alg25@aber.ac.uk",
-"cns@aber.ac.uk",
-"phs@aber.ac.uk",
-"qqs@aber.ac.uk"]
+TeacherEmail =[]
 
+def URLtoEmail(arraytoChange):
+    for i in range(0,len(arraytoChange)):
+        charArray = []
+        for z in reversed(range(0,len(arraytoChange[i]))):
+            if "/" in arraytoChange[i][z]:
+                break
+            else:
+                charArray.append(arraytoChange[i][z])
+        charArray.reverse()
+        email = "".join(charArray)
+        email += "@aber.ac.uk"
+        TeacherEmail.append(email)
+        
+URLtoEmail(URLarray)
 
 arrayOfClasses = []
 arryOfClassesWithoutrepeating = []
@@ -188,7 +171,6 @@ URLtoUse = "http://www.aber.ac.uk/en/cs/staff-profiles/listing/profile/dit5/"
 text_file = open(r"C:\Users\PC\Desktop\CS foundation\TeacherProfile.txt", "w")
 text_file2 = open(r"C:\Users\PC\Desktop\CS foundation\ClassesProfile.txt", "w")
 text_file3 = open(r"C:\Users\PC\Desktop\CS foundation\ClassesProfileVr2.txt", "w")
-
 
 
 UserProfile = {}
